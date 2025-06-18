@@ -54,7 +54,12 @@
       <div style="color: rgb(125, 0, 61);">{{ train.source }} to {{train.destination}}</div>
       <small class="text-muted">Leaves {{train.source}} on {{ train.departure_time|date:"d b, h:i A" }}</small></p>
     </div>
-    <h2>{{ train.name }}</h2>
+    <h2>{{ train.name }} </h2> 
+    <div style="color: red;">
+      {% if train.departed_status %}
+        This train has already left the source.
+      {% endif %}
+    </div>
     <a href="{% url 'train-details' train.id%}">Check seat availability</a>
   </div>
 </article>

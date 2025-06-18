@@ -22,8 +22,8 @@ def home(request):
     source = request.GET.get("source", "").strip()
     destination = request.GET.get("destination", "").strip()
     departure_time = request.GET.get("departure_time", "").strip()
-    trains = Train.objects.all()
-    
+    trains = Train.objects.all().order_by('-departure_time')
+   
     if source:
         trains = trains.filter(source__icontains=source)
     
@@ -33,8 +33,9 @@ def home(request):
     if departure_time:
         trains = trains.filter(departure_time__icontains=departure_time)
         
-    
-    
+    for train in trains:
+        if train.departure_time < timezone.now():
+            train.departed_status = 'Departed'
     return render(request, 'backend/home.html', {'trains':trains})
 
 class RegisterView(APIView):
