@@ -1,2 +1,4 @@
 Django==5.2.3
 djangorestframework==3.16.0
+django-crispy-forms==2.4
+crispy-bootstrap4==2024.10
