@@ -1,2 +1,2 @@
-pip install django-crispy-forms
-pip install crispy-bootstrap4
+Django==5.2.3
+djangorestframework==3.16.0
