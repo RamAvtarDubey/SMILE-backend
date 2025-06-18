@@ -44,12 +44,28 @@
     </form>
   </div>
 
+  <style>
+        .glowing-div {
+      
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+            transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the glow */
+        }
 
+        .glowing-div:hover {
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.8); /* Deeper glow on hover */
+        }
+    </style>
 
   {% if trains %}
 <h2 style="margin-top: 10;">Details of trains:</h2>
 {% for train in trains %}
-<article class="media content-section mt-20">
+<article class="media content-section mt-20 glowing-div">
   <div class="media-body">
     <div class="article-metadata">
       <p class="mr-2">
