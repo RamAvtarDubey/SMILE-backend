@@ -1,0 +1,21 @@
+{% extends "backend/base.html" %}
+{% block content %}
+    <div class = "content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete Train</legend>
+                <h2>Are you sure you want to delete the train "{{ object.name }}"</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                <a href="{% url 'train-details' object.id %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+
+       
+    </div>
+
+{% endblock content %}
+
+   

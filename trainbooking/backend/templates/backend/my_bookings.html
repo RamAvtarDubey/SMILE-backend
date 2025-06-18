@@ -1,0 +1,24 @@
+{% extends 'backend/base.html' %}
+{% block content %}
+<h1 style="margin-top: 110;">{{request.user}} has following bookings:</h1>
+{% if bookings %}
+
+{% for booking in bookings %}
+<div class="container border-top border-bottom">
+<br><h4>Train : {{booking.train}}</h4>
+Seat Number : {{booking.seat_number}} <br>
+Source : {{booking.train.source}} <br>
+Destination : {{booking.train.destination}} <br>
+Departure Time : {{booking.train.departure_time}} <br>
+Booking Time : {{booking.booking_time}} <br><br>
+<a href="{% url 'cancel-booking' booking.id%}">Cancel booking</a><br><br>
+</div>
+{% endfor %}
+
+{% else %}
+<h3>No bookings found for {{request.user}}</h3>
+
+{% endif %}
+
+
+{% endblock %}

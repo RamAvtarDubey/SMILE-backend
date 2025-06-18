@@ -1,0 +1,64 @@
+{% extends 'backend/base.html' %}
+{% block content %}
+
+
+
+<!-- Toggle Button -->
+<div style="margin-top: 100;">
+  <button class="btn btn-secondary mb-3" type="button" data-toggle="collapse" data-target="#searchFilters" aria-expanded="false" aria-controls="searchFilters">
+    Search Filters
+  </button>
+
+
+{% if user.is_superuser %}
+<a href="{% url 'add-train' %}" class="btn btn-primary mb-3" style="margin-bottom: 40;">Add trains</a>
+{% endif %}
+
+
+  <!-- Collapsible Search Form -->
+  <div class="collapse" id="searchFilters">
+    <form method="get" class="container">
+      <div class="form-row align-items-end">
+        <div class="form-group col-md-3">
+          <label for="source">Source</label>
+          <input type="text" class="form-control" id="source" name="source" value="{{ request.GET.source }}">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="destination">Destination</label>
+          <input type="text" class="form-control" id="destination" name="destination" value="{{ request.GET.destination }}">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="departure_time">Date</label>
+          <input type="date" class="form-control" id="departure_time" name="departure_time" value="{{ request.GET.departure_time }}">
+        </div>
+
+        <div class="form-group col-md-3">
+          <button type="submit" class="btn btn-outline-info btn-block">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<h2 style="margin-top: 10;">Details of trains:</h2>
+
+{% for train in trains %}
+<article class="media content-section mt-20">
+  <div class="media-body">
+    <div class="article-metadata">
+      <p class="mr-2">
+      <div style="color: rgb(125, 0, 61);">{{ train.source }} to {{train.destination}}</div>
+      <small class="text-muted">Leaves {{train.source}} on {{ train.departure_time|date:"d b, h:i A" }}</small></p>
+    </div>
+    <h2>{{ train.name }}</h2>
+    <a href="{% url 'train-details' train.id%}">Check seat availability</a>
+  </div>
+</article>
+
+{% endfor %}
+
+{% endblock content %}

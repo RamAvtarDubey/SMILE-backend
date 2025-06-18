@@ -1,0 +1,37 @@
+{% extends 'backend/base.html' %}
+<!--  details in the train-details.html -->
+{% block content %}
+
+
+<h2>Details of {{ train}}:</h2>
+
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <p class="mr-2" ><div style="color: rgb(125, 0, 61);">{{ train.source }} to  {{train.destination}}</div>
+      <small class="text-muted">Leaves {{ train.source }} on {{ train.departure_time|date:"d b, h:i A" }}</small></p>
+    </div>
+    <h2>{{ train.name }}</h2>
+    <p class="article-content"><p>Total Seats : {{ train.total_seats }}</p> <p>Seats Left: {{ train.seats_available }}</p>
+
+    <a href="{% url 'book-train' train.id %}">Book seat</a>
+<br><br>
+     <div>
+        {% if user.is_superuser %}
+        <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">More Options
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'update-train' train.id %}" class="btn btn-primary btn-sm mb-1 ml-2 mt-1">Update</a><a href="{% url 'delete-train' train.id %}" class="btn btn-danger btn-sm mb-1 ml-3 mt-1">Delete</a></li>
+                </ul>
+            </div>
+        
+        
+        {% endif %}
+    </div>
+
+
+  </div>
+</article>
+
+{% endblock content %}
