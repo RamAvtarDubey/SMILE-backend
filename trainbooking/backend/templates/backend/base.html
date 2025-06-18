@@ -61,83 +61,87 @@
         {% block content %} {% endblock %}
     </div>
 
+ <footer>
+        <!-- Train animation -->
 
-    <!-- Train animation -->
+        <style>
+            .train-animation-wrapper {
+                width: 100%;
+                height: 65px;
+                overflow: hidden;
+                background-color: #dfecf4;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+            }
 
-    <style>
-        .train-animation-wrapper {
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-            margin-top: 50px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            position: relative;
-        }
 
-        .train {
-            display: flex;
-            position: absolute;
-            bottom: 20px;
-            left: -300px;
-            animation: moveTrain 10s linear infinite;
-        }
-
-        .engine,
-        .coach {
-            width: 80px;
-            height: 60px;
-            background-color: #333;
-            margin-right: 10px;
-            position: relative;
-            border-radius: 5px;
-        }
-
-        .engine::before,
-        .coach::before,
-        .engine::after,
-        .coach::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            width: 16px;
-            height: 16px;
-            background-color: #000;
-            border-radius: 50%;
-        }
-
-        .engine::before,
-        .coach::before {
-            left: 10px;
-        }
-
-        .engine::after,
-        .coach::after {
-            right: 10px;
-        }
-
-        @keyframes moveTrain {
-            0% {
+            .train {
+                display: flex;
+                position: absolute;
+                bottom: 18px;
                 left: -300px;
+                animation: moveTrain 10s linear infinite;
             }
 
-            100% {
-                left: 100%;
+            .engine,
+            .coach {
+                width: 50px;
+                height: 35px;
+                background-color: #333;
+                margin-right: 5px;
+                position: relative;
+                border-radius: 4px;
             }
-        }
-    </style>
 
-    <div class="train-animation-wrapper">
-        <div class="train">
-            <div class="engine"></div>
-            <div class="coach"></div>
-            <div class="coach"></div>
-            <div class="coach"></div>
-            <div class="coach"></div>
+            .engine::before,
+            .coach::before,
+            .engine::after,
+            .coach::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                width: 14px;
+                height: 14px;
+                background-color: #000;
+                border-radius: 50%;
+            }
+
+            .engine::before,
+            .coach::before {
+                left: 8px;
+            }
+
+            .engine::after,
+            .coach::after {
+                right: 8px;
+            }
+
+            @keyframes moveTrain {
+                0% {
+                    left: -300px;
+                }
+
+                100% {
+                    left: 100%;
+                }
+            }
+        </style>
+
+        <div class="train-animation-wrapper">
+            <div class="train">
+                <div class="engine"></div>
+                <div class="coach"></div>
+                <div class="coach"></div>
+                <div class="coach"></div>
+                <div class="coach"></div>
+                <div class="coach"></div>
+                <div class="coach"></div>
+            </div>
         </div>
-    </div>
 
-
+    </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
