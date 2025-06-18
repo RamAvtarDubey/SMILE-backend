@@ -46,8 +46,8 @@
 
 
 
+  {% if trains %}
 <h2 style="margin-top: 10;">Details of trains:</h2>
-
 {% for train in trains %}
 <article class="media content-section mt-20">
   <div class="media-body">
@@ -67,5 +67,7 @@
 </article>
 
 {% endfor %}
-
+{% else %}
+No trains found. Please contact admin to add trains.
+{% endif %}
 {% endblock content %}
